@@ -1,5 +1,5 @@
 #!/bin/bash
-app="docker.ChristmasTreeController"
+app="docker.christmas.tree.controller"
 docker build -t ${app} .
 docker run -d -p 56733:80 \
   --name=${app} \
