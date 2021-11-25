@@ -4,7 +4,7 @@ from flask import render_template
 
 @app.route("/")
 def home():
-    return "hello world!"
+    return "<b>There has been a change</b>"
 
 
 @app.route("/template")
