@@ -1,16 +1,16 @@
 from flask import Flask, render_template, request
-from app import app
+from app import app, tree
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         if request.form.get("On") == "On":
-            return "1"
+            tree.on()
         elif request.form.get("Off") == "Off":
-            return "2"
+            tree.off()
         else:
-            return "3"
+            return "Error"
     elif request.method == "GET":
         return render_template("home.html")
 
