@@ -6,9 +6,9 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        if request.form.get("action1") == "VALUE1":
+        if request.form.get("on") == "on":
             pass  # do something
-        elif request.form.get("action2") == "VALUE2":
+        elif request.form.get("off") == "off":
             pass  # do something else
         else:
             pass  # unknown
