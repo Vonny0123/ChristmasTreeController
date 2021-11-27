@@ -1,18 +1,17 @@
 from flask import Flask, render_template, request
-
-app = Flask(__name__)
+from app import app
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        if request.form.get("on") == "on":
-            pass  # do something
-        elif request.form.get("off") == "off":
-            pass  # do something else
+        if request.form.get("On") == "On":
+            return "1"
+        elif request.form.get("Off") == "Off":
+            return "2"
         else:
-            pass  # unknown
+            return "3"
     elif request.method == "GET":
-        return render_template("home.html", form=form)
+        return render_template("home.html")
 
     return render_template("home.html")
