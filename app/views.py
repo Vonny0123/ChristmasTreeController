@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from app import app, tree
+from . import app, tree
 
 
 @app.route("/", methods=["GET", "POST"])
