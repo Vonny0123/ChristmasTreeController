@@ -1,4 +1,4 @@
-FROM python
+FROM python:3
 ENV STATIC_URL /static
 ENV STATIC_PATH /var/www/app/static
 COPY ./requirements.txt /var/www/requirements.txt
