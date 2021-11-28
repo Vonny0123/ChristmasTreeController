@@ -5,7 +5,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y python python-pip
 ENV STATIC_URL /static
 ENV STATIC_PATH /var/www/app/static
 COPY ./requirements.txt /var/www/requirements.txt
-COPY ./main.py ./main.py
+Copy ./app /app
+COPY ./main.py /main.py
 RUN pip install -r /var/www/requirements.txt
 
 ENTRYPOINT [ "python" ]
