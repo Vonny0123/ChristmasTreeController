@@ -8,6 +8,6 @@ COPY ./requirements.txt /var/www/requirements.txt
 COPY ./main.py ./main.py
 RUN pip install -r /var/www/requirements.txt
 
-ENTRYPOINT [ "python3" ]
+ENTRYPOINT [ "python" ]
 
 CMD [ "main.py" ]
