@@ -1,5 +1,6 @@
 FROM arm32v6/alpine:3.6
-RUN apk --update add bash nano
+RUN apk --no-cache add bash python python-dev py-pip build-base curl
+RUN pip install --upgrade pip
 ENV STATIC_URL /static
 ENV STATIC_PATH /var/www/app/static
 COPY ./requirements.txt /var/www/requirements.txt
