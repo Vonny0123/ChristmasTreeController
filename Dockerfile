@@ -1,5 +1,4 @@
-FROM arm32v6/alpine
-RUN apk add --update --no-cache python py-pip
+FROM python
 RUN python3 -m ensurepip
 ENV STATIC_URL /static
 ENV STATIC_PATH /var/www/app/static
