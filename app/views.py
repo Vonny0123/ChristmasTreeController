@@ -10,7 +10,6 @@ exit_event = Event()
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        exit_event.set()
         if request.form.get("On") == "On":
             tree.on()
             return render_template("home.html")
@@ -41,6 +40,7 @@ def index():
 
 
 def hue_cycle():
+    exit_event.set()
     tree.color = Color("red")
 
     try:
@@ -54,6 +54,7 @@ def hue_cycle():
 
 
 def one_by_one():
+    exit_event.set()
     colors = [Color("red"), Color("green"), Color("blue")]  # add more if you like
 
     try:
@@ -69,6 +70,8 @@ def one_by_one():
 
 
 def random_sparkles():
+    exit_event.set()
+
     def random_color():
         r = random.random()
         g = random.random()
