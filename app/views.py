@@ -12,16 +12,13 @@ exit_event3 = Event()
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        exit_event1.set()
+        exit_event2.set()
+        exit_event3.set()
         if request.form.get("On") == "On":
-            exit_event1.set()
-            exit_event2.set()
-            exit_event3.set()
             tree.on()
             return render_template("home.html")
         elif request.form.get("Off") == "Off":
-            exit_event1.set()
-            exit_event2.set()
-            exit_event3.set()
             tree.off()
             return render_template("home.html")
         elif request.form.get("Cycle") == "On":
@@ -49,15 +46,12 @@ def index():
 
 def hue_cycle():
     tree.color = Color("red")
-    exit_event2.set()
-    exit_event3.set()
     if exit_event1.is_set():
         exit_event1.clear()
     try:
         while True:
             tree.color += Hue(deg=1)
             if exit_event1.is_set():
-                exit_event1.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
@@ -65,8 +59,6 @@ def hue_cycle():
 
 def one_by_one():
     colors = [Color("red"), Color("green"), Color("blue")]  # add more if you like
-    exit_event1.set()
-    exit_event3.set()
     if exit_event2.is_set():
         exit_event2.clear()
     try:
@@ -75,15 +67,12 @@ def one_by_one():
                 for pixel in tree:
                     pixel.color = color
             if exit_event2.is_set():
-                exit_event2.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
 
 
 def random_sparkles():
-    exit_event1.set()
-    exit_event2.set()
     if exit_event3.is_set():
         exit_event3.clear()
 
@@ -98,7 +87,6 @@ def random_sparkles():
             pixel = random.choice(tree)
             pixel.color = random_color()
             if exit_event3.is_set():
-                exit_event3.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
