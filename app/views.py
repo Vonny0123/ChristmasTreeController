@@ -4,7 +4,9 @@ import random
 from threading import Thread, Event
 from . import app, tree
 
-exit_event = Event()
+exit_event1 = Event()
+exit_event2 = Event()
+exit_event3 = Event()
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -40,37 +42,44 @@ def index():
 
 
 def hue_cycle():
-    exit_event.set()
     tree.color = Color("red")
-
+    exit_event2.set()
+    exit_event3.set()
+    if exit_event1.is_set():
+        exit_event1.clear()
     try:
         while True:
             tree.color += Hue(deg=1)
-            if exit_event.is_set():
-                exit_event.clear()
+            if exit_event1.is_set():
+                exit_event1.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
 
 
 def one_by_one():
-    exit_event.set()
     colors = [Color("red"), Color("green"), Color("blue")]  # add more if you like
-
+    exit_event1.set()
+    exit_event3.set()
+    if exit_event2.is_set():
+        exit_event2.clear()
     try:
         while True:
             for color in colors:
                 for pixel in tree:
                     pixel.color = color
-            if exit_event.is_set():
-                exit_event.clear()
+            if exit_event2.is_set():
+                exit_event2.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
 
 
 def random_sparkles():
-    exit_event.set()
+    exit_event1.set()
+    exit_event2.set()
+    if exit_event3.is_set():
+        exit_event3.clear()
 
     def random_color():
         r = random.random()
@@ -82,8 +91,8 @@ def random_sparkles():
         while True:
             pixel = random.choice(tree)
             pixel.color = random_color()
-            if exit_event.is_set():
-                exit_event.clear()
+            if exit_event3.is_set():
+                exit_event3.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
