@@ -10,8 +10,6 @@ exit_event = Event()
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        exit_event.set()
-
         if request.form.get("On") == "On":
             tree.on()
             return render_template("home.html")
@@ -19,16 +17,19 @@ def index():
             tree.off()
             return render_template("home.html")
         elif request.form.get("Cycle") == "On":
+            exit_event.set()
             thread = Thread(target=hue_cycle)
             thread.daemon = True
             thread.start()
             return render_template("home.html")
         elif request.form.get("OneByOne") == "On":
+            exit_event.set()
             thread = Thread(target=one_by_one)
             thread.daemon = True
             thread.start()
             return render_template("home.html")
         elif request.form.get("Sparkle") == "On":
+            exit_event.set()
             thread = Thread(target=random_sparkles)
             thread.daemon = True
             thread.start()
