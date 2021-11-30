@@ -1,8 +1,4 @@
-FROM resin/rpi-raspbian:latest
-RUN apt-get -q update && \
-	apt-get -qy install \
-        python python-pip \
-        python-dev python-pip gcc make  
+FROM python:3.6-slim-stretch 
 COPY . .
 RUN pip install -r /requirements.txt
 
