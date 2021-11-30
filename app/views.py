@@ -13,9 +13,15 @@ exit_event3 = Event()
 def index():
     if request.method == "POST":
         if request.form.get("On") == "On":
+            exit_event1.set()
+            exit_event2.set()
+            exit_event3.set()
             tree.on()
             return render_template("home.html")
         elif request.form.get("Off") == "Off":
+            exit_event1.set()
+            exit_event2.set()
+            exit_event3.set()
             tree.off()
             return render_template("home.html")
         elif request.form.get("Cycle") == "On":
