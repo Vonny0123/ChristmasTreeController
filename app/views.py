@@ -21,17 +21,17 @@ def index():
         elif request.form.get("Off") == "Off":
             tree.off()
             return render_template("home.html")
-        elif request.form.get("Cycle") == "On":
+        elif request.form.get("Cycle") == "Cycle":
             thread = Thread(target=hue_cycle)
             thread.daemon = True
             thread.start()
             return render_template("home.html")
-        elif request.form.get("OneByOne") == "On":
+        elif request.form.get("OneByOne") == "OneByOne":
             thread = Thread(target=one_by_one)
             thread.daemon = True
             thread.start()
             return render_template("home.html")
-        elif request.form.get("Sparkle") == "On":
+        elif request.form.get("Sparkle") == "Sparkle":
             thread = Thread(target=random_sparkles)
             thread.daemon = True
             thread.start()
