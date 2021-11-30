@@ -10,6 +10,7 @@ exit_event = Event()
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        exit_event.set()
         if request.form.get("On") == "On":
             tree.on()
             return render_template("home.html")
