@@ -17,19 +17,16 @@ def index():
             tree.off()
             return render_template("home.html")
         elif request.form.get("Cycle") == "On":
-            exit_event.set()
             thread = Thread(target=hue_cycle)
             thread.daemon = True
             thread.start()
             return render_template("home.html")
         elif request.form.get("OneByOne") == "On":
-            exit_event.set()
             thread = Thread(target=one_by_one)
             thread.daemon = True
             thread.start()
             return render_template("home.html")
         elif request.form.get("Sparkle") == "On":
-            exit_event.set()
             thread = Thread(target=random_sparkles)
             thread.daemon = True
             thread.start()
@@ -49,6 +46,7 @@ def hue_cycle():
         while True:
             tree.color += Hue(deg=1)
             if exit_event.is_set():
+                exit_event.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
@@ -63,6 +61,7 @@ def one_by_one():
                 for pixel in tree:
                     pixel.color = color
             if exit_event.is_set():
+                exit_event.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
@@ -80,6 +79,7 @@ def random_sparkles():
             pixel = random.choice(tree)
             pixel.color = random_color()
             if exit_event.is_set():
+                exit_event.clear()
                 break
     except KeyboardInterrupt:
         tree.close()
