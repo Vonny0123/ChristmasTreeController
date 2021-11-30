@@ -1,13 +1,17 @@
 from colorzero import Color, Hue
 from flask import Flask, render_template, request
 import random
-from threading import Thread
+from threading import Thread, Event
 from . import app, tree
+
+exit_event = Event()
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        exit_event.set()
+
         if request.form.get("On") == "On":
             tree.on()
             return render_template("home.html")
@@ -43,6 +47,8 @@ def hue_cycle():
     try:
         while True:
             tree.color += Hue(deg=1)
+            if exit_event.is_set():
+                break
     except KeyboardInterrupt:
         tree.close()
 
@@ -55,6 +61,8 @@ def one_by_one():
             for color in colors:
                 for pixel in tree:
                     pixel.color = color
+            if exit_event.is_set():
+                break
     except KeyboardInterrupt:
         tree.close()
 
@@ -70,5 +78,7 @@ def random_sparkles():
         while True:
             pixel = random.choice(tree)
             pixel.color = random_color()
+            if exit_event.is_set():
+                break
     except KeyboardInterrupt:
         tree.close()
