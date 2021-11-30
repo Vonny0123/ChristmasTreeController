@@ -1,6 +1,8 @@
-FROM python:3.8
-ENV TZ=Europe/London
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+FROM resin/rpi-raspbian:latest
+RUN apt-get -q update && \
+	apt-get -qy install \
+        python python-pip \
+        python-dev python-pip gcc make  
 COPY . .
 RUN pip install -r /requirements.txt
 
