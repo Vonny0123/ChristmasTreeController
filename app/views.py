@@ -12,6 +12,8 @@ exit_event3 = Event()
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        tree.brightness = request.form.get("brightness")
+
         exit_event1.set()
         exit_event2.set()
         exit_event3.set()
@@ -66,8 +68,8 @@ def one_by_one():
             for color in colors:
                 for pixel in tree:
                     pixel.color = color
-            if exit_event2.is_set():
-                break
+                    if exit_event2.is_set():
+                        break
     except KeyboardInterrupt:
         tree.close()
 
