@@ -1,3 +1,4 @@
+from src.tree import RGBXmasTree
 from colorzero import Color, Hue
 from flask import Flask, render_template, request, redirect
 import random
@@ -20,7 +21,7 @@ def index():
         if request.form.get("On") == "On":
             tree.on()
         elif request.form.get("Off") == "Off":
-            tree.off()
+            tree = RGBXmasTree()
         elif request.form.get("Cycle") == "Cycle":
             thread = Thread(target=hue_cycle)
             thread.daemon = True
