@@ -35,8 +35,6 @@ def index():
             thread.start()
         else:
             return "Error"
-
-        return redirect(request.referrer)
     elif request.method == "GET":
         return render_template("home.html")
 
