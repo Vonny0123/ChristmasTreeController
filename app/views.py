@@ -68,6 +68,9 @@ def one_by_one():
                 else:
                     continue
                 break
+            else:
+                continue
+            break
     except KeyboardInterrupt:
         tree.close()
 
