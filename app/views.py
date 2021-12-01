@@ -19,7 +19,9 @@ def index():
         exit_event3.set()
         if request.form.get("On") == "On":
             tree.on()
-            return render_template("home.html")
+            return render_template(
+                "home.html", brightness=request.form.get("brightness")
+            )
         elif request.form.get("Off") == "Off":
             tree.off()
             return render_template("home.html")
