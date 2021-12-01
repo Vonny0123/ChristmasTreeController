@@ -12,7 +12,7 @@ exit_event3 = Event()
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        tree.brightness = request.form.get("brightness") / 100
+        tree.brightness = int(request.form.get("brightness")) / 100
 
         exit_event1.set()
         exit_event2.set()
