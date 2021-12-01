@@ -21,7 +21,7 @@ def index():
         if request.form.get("On") == "On":
             tree.on()
         elif request.form.get("Off") == "Off":
-            tree = RGBXmasTree()
+            tree.off()
         elif request.form.get("Cycle") == "Cycle":
             thread = Thread(target=hue_cycle)
             thread.daemon = True
