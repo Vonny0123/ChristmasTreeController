@@ -35,10 +35,9 @@ def index():
             thread.start()
         else:
             return "Error"
+        return render_template("home.html")
     elif request.method == "GET":
         return render_template("home.html")
-
-    return redirect(request.referrer)
 
 
 def hue_cycle():
@@ -65,6 +64,9 @@ def one_by_one():
                     pixel.color = color
                     if exit_event2.is_set():
                         break
+                else:
+                    continue
+                break
     except KeyboardInterrupt:
         tree.close()
 
