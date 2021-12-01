@@ -1,5 +1,5 @@
 from colorzero import Color, Hue
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import random
 from threading import Thread, Event
 from . import app, tree
@@ -19,29 +19,24 @@ def index():
         exit_event3.set()
         if request.form.get("On") == "On":
             tree.on()
-            return render_template(
-                "home.html", brightness=request.form.get("brightness")
-            )
         elif request.form.get("Off") == "Off":
             tree.off()
-            return render_template("home.html")
         elif request.form.get("Cycle") == "Cycle":
             thread = Thread(target=hue_cycle)
             thread.daemon = True
             thread.start()
-            return render_template("home.html")
         elif request.form.get("OneByOne") == "OneByOne":
             thread = Thread(target=one_by_one)
             thread.daemon = True
             thread.start()
-            return render_template("home.html")
         elif request.form.get("Sparkle") == "Sparkle":
             thread = Thread(target=random_sparkles)
             thread.daemon = True
             thread.start()
-            return render_template("home.html")
         else:
             return "Error"
+
+        return redirect(request.referrer)
     elif request.method == "GET":
         return render_template("home.html")
 
