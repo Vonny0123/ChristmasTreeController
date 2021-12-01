@@ -38,6 +38,8 @@ def index():
     elif request.method == "GET":
         return render_template("home.html")
 
+    return redirect(request.referrer)
+
 
 def hue_cycle():
     tree.color = Color("red")
