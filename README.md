@@ -1,3 +1,5 @@
+![screenshot](images/screenshot.png)
+
 # Christmas Tree Controller
 
 This repository contains code to host a Flask web server for controlling an RGB Christmas Tree (https://thepihut.com/products/3d-rgb-xmas-tree-for-raspberry-pi). Currently the control is limited to the three example functions and controlling brightness.
