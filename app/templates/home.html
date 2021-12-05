@@ -28,6 +28,26 @@
             margin-right: auto;
         }
 
+        .header .img1 {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: #555;
+        }
+
+        .header .img2 {
+            float: right;
+            width: 100px;
+            height: 100px;
+            background: #555;
+        }
+
+        .header h1 {
+            position: relative;
+            top: 18px;
+            left: 10px;
+        }
+
         .btn {
             display: inline-block;
             padding: 15px 25px;
@@ -56,56 +76,59 @@
     </style>
 </head>
 
-<h1>Christmas Tree Controller
-    <h1 />
-    <form method="post" action="/">
-        <table class="center">
-            <tr>
-                <td colspan="3" style="width: 100%">
-                    <div class="first-half">
-                        <input type="submit" style="width:100%" class="btn" value="On" name="On" />
-                    </div>
-                    <div class="second-half">
-                        <input type="submit" style="width:100%" class="btn" value="Off" name="Off" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 33%">
-                    <input type="submit" style="width:100%" class="btn" value="Cycle" name="Cycle" />
-                </td>
-                <td style="width: 33%">
-                    <input type="submit" style="width:100%" class="btn" value="OneByOne" name="OneByOne" />
-                </td>
-                <td style="width: 33%">
-                    <input type="submit" style="width:100%" class="btn" value="Sparkle" name="Sparkle" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" style="width: 100%">
-                    <label for="brightness-slider">Brightness:</label>
-                    <input type="range" id="brightness-slider" style="width:100%" class="slide" min="0" max="100"
-                        name="brightness" value={{brightness}} />
-                </td>
-            </tr>
-        </table>
+<div class="header">
+    <img src="images/christmas tree.jpg" alt="tree" class="img1" />
+    <h1>Christmas Tree Controller</h1>
+    <img src="images/christmas tree.jpg" alt="tree" class="img2" />
+</div>
+<form method="post" action="/">
+    <table class="center">
+        <tr>
+            <td colspan="3" style="width: 100%">
+                <div class="first-half">
+                    <input type="submit" style="width:100%" class="btn" value="On" name="On" />
+                </div>
+                <div class="second-half">
+                    <input type="submit" style="width:100%" class="btn" value="Off" name="Off" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 33%">
+                <input type="submit" style="width:100%" class="btn" value="Cycle" name="Cycle" />
+            </td>
+            <td style="width: 33%">
+                <input type="submit" style="width:100%" class="btn" value="OneByOne" name="OneByOne" />
+            </td>
+            <td style="width: 33%">
+                <input type="submit" style="width:100%" class="btn" value="Sparkle" name="Sparkle" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="width: 100%">
+                <label for="brightness-slider">Brightness:</label>
+                <input type="range" id="brightness-slider" style="width:100%" class="slide" min="0" max="100"
+                    name="brightness" value={{brightness}} />
+            </td>
+        </tr>
+    </table>
 
-        <script>
-            const Http = new XMLHttpRequest();
-            var rangeslider = document.getElementById("brightness-slider");
-            var output = document.getElementById("demo");
-            var current;
+    <script>
+        const Http = new XMLHttpRequest();
+        var rangeslider = document.getElementById("brightness-slider");
+        var output = document.getElementById("demo");
+        var current;
 
-            rangeslider.oninput = function () {
-                current = this.value;
+        rangeslider.oninput = function () {
+            current = this.value;
 
-                // I've added this call to the server, which send 'current' value
-                Http.open('POST', '/slider_update')
-                Http.send(current)
-            }
+            // I've added this call to the server, which send 'current' value
+            Http.open('POST', '/slider_update')
+            Http.send(current)
+        }
 
-        </script>
+    </script>
 
-    </form>
+</form>
 
 </html>
