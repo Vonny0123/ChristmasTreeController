@@ -1,4 +1,4 @@
-![screenshot](/screenshot.png)
+![screenshot](https://github.com/Vonny0123/ChristmasTreeController/blob/master/screenshot.PNG)
 
 # Christmas Tree Controller
 
