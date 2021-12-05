@@ -35,26 +35,28 @@
     <form method="post" action="/">
         <table>
             <tr>
-                <td colspan="1" style="width: 50%">
-                    <input type="submit" style="width:100%" class="btn" value="On" name="On" />
-                </td>
-                <td colspan="3" style="width: 50%">
-                    <input type="submit" style="width:100%" class="btn" value="Off" name="Off" />
+                <td colspan="3" style="width: 100%">
+                    <div>
+                        <input type="submit" style="width:100%" class="btn" value="On" name="On" />
+                    </div>
+                    <div>
+                        <input type="submit" style="width:100%" class="btn" value="Off" name="Off" />
+                    </div>
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="width: 33%">
+                <td style="width: 33%">
                     <input type="submit" style="width:100%" class="btn" value="Cycle" name="Cycle" />
                 </td>
-                <td colspan="2" style="width: 33%">
+                <td style="width: 33%">
                     <input type="submit" style="width:100%" class="btn" value="OneByOne" name="OneByOne" />
                 </td>
-                <td colspan="2" style="width: 33%">
+                <td style="width: 33%">
                     <input type="submit" style="width:100%" class="btn" value="Sparkle" name="Sparkle" />
                 </td>
             </tr>
             <tr>
-                <td colspan="6" style="width: 100%">
+                <td colspan="3" style="width: 100%">
                     <input type="range" style="width:100%" class="slide" min="0" max="100" name="brightness"
                         value={{brightness}} />
                 </td>
