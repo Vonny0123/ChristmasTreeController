@@ -35,16 +35,17 @@
     <form method="post" action="/">
         <table>
             <tr>
-                <td><input type="submit" class="btn" value="On" name="On" /></td>
-                <td><input type="submit" class="btn" value="Off" name="Off" /></td>
+                <td colspan="3"><input type="submit" class="btn" value="On" name="On" /></td>
+                <td colspan="3"><input type="submit" class="btn" value="Off" name="Off" /></td>
             </tr>
             <tr>
-                <td><input type="submit" class="btn" value="Cycle" name="Cycle" /></td>
-                <td><input type="submit" class="btn" value="OneByOne" name="OneByOne" /></td>
-                <td><input type="submit" class="btn" value="Sparkle" name="Sparkle" /></td>
+                <td colspan="2"><input type="submit" class="btn" value="Cycle" name="Cycle" /></td>
+                <td colspan="2"><input type="submit" class="btn" value="OneByOne" name="OneByOne" /></td>
+                <td colspan="2"><input type="submit" class="btn" value="Sparkle" name="Sparkle" /></td>
             </tr>
             <tr>
-                <td><input type="range" class="slide" min="0" max="100" name="brightness" value={{brightness}} /></td>
+                <td colspan="6"><input type="range" class="slide" min="0" max="100" name="brightness"
+                        value={{brightness}} /></td>
             </tr>
         </table>
 
