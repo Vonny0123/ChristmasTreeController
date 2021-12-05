@@ -47,7 +47,7 @@ def index():
 @app.route("/slider_update", methods=["POST", "GET"])
 def slider():
     received_data = request.data
-    print(received_data)
+    tree.brightness = int(request.form.get("brightness")) / 100
     return received_data
 
 
