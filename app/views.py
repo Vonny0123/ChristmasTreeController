@@ -36,7 +36,9 @@ def index():
             thread.start()
         else:
             return "Error"
-        return render_template("home.html")
+        return render_template(
+            "home.html", brightness=int(request.form.get("brightness"))
+        )
     elif request.method == "GET":
         return render_template("home.html")
 
