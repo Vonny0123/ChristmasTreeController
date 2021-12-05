@@ -9,7 +9,7 @@
         }
 
         h1 {
-            color: blue;
+            color: rgb(51, 51, 51);
         }
 
         .btn {
@@ -33,14 +33,21 @@
 <h1>Christmas Tree Controller
     <h1 />
     <form method="post" action="/">
-        <input type="submit" class="btn" value="On" name="On" />
-        <input type="submit" class="btn" value="Off" name="Off" />
-        <br />
-        <input type="submit" class="btn" value="Cycle" name="Cycle" />
-        <input type="submit" class="btn" value="OneByOne" name="OneByOne" />
-        <input type="submit" class="btn" value="Sparkle" name="Sparkle" />
-        <br />
-        <input type="range" class="slide" min="0" max="100" name="brightness" value={{brightness}} />
+        <table>
+            <tr>
+                <input type="submit" class="btn" value="On" name="On" />
+                <input type="submit" class="btn" value="Off" name="Off" />
+            </tr>
+            <tr>
+                <input type="submit" class="btn" value="Cycle" name="Cycle" />
+                <input type="submit" class="btn" value="OneByOne" name="OneByOne" />
+                <input type="submit" class="btn" value="Sparkle" name="Sparkle" />
+            </tr>
+            <tr>
+                <input type="range" class="slide" min="0" max="100" name="brightness" value={{brightness}} />
+            </tr>
+        </table>
+
     </form>
 
 </html>
