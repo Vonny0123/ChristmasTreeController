@@ -43,6 +43,14 @@ def index():
         return render_template("home.html")
 
 
+# I've added this method to receive slider updates
+@app.route("/slider_update", methods=["POST", "GET"])
+def slider():
+    received_data = request.data
+    print(received_data)
+    return received_data
+
+
 def hue_cycle():
     tree.color = Color("red")
     if exit_event1.is_set():
