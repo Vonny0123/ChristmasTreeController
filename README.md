@@ -1,4 +1,4 @@
-![screenshot](./images/screenshot.png)
+![screenshot](/screenshot.png)
 
 # Christmas Tree Controller
 
