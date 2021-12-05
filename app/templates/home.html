@@ -99,23 +99,9 @@
             rangeslider.oninput = function () {
                 current = this.value;
 
-                if (current < 33) {
-                    output.innerHTML = 'Reverse';
-                    current = 'reverse'
-                }
-                else if (current >= 33 && current <= 66) {
-                    output.innerHTML = 'Neutral';
-                    current = 'neutral'
-                }
-                else if (current > 66) {
-                    output.innerHTML = 'Drive';
-                    current = 'drive'
-                }
-
                 // I've added this call to the server, which send 'current' value
                 Http.open('POST', '/slider_update')
                 Http.send(current)
-
             }
 
         </script>
