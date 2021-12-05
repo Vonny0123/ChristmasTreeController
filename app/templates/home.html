@@ -13,6 +13,11 @@
             text-align: center;
         }
 
+        input,
+        label {
+            display: block;
+        }
+
         .center {
             margin-left: auto;
             margin-right: auto;
@@ -73,7 +78,7 @@
             </tr>
             <tr>
                 <td colspan="3" style="width: 100%">
-                    <label for="brightness-slider">Brightness</label>
+                    <label for="brightness-slider">Brightness:</label>
                     <input type="range" id="brightness-slider" style="width:100%" class="slide" min="0" max="100"
                         name="brightness" value={{brightness}} />
                 </td>
