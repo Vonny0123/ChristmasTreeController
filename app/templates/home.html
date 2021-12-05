@@ -65,41 +65,47 @@
 
 
 <form method="post" action="/">
-    <object data="static/tree.txt" type="text/html" width="150" height="300"
-        style="overflow:hidden; width: 150px; height: 300px; display: inline-block"></object>
-    <table class="center">
-        <tr colspan="3" style="width: 100%">
-            <h1>Christmas Tree Controller</h1>
-        </tr>
-        <tr>
-            <td colspan="3" style="width: 100%">
-                <div class="first-half">
-                    <input type="submit" style="width:100%" class="btn" value="On" name="On" />
-                </div>
-                <div class="second-half">
-                    <input type="submit" style="width:100%" class="btn" value="Off" name="Off" />
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 33%">
-                <input type="submit" style="width:100%" class="btn" value="Cycle" name="Cycle" />
-            </td>
-            <td style="width: 33%">
-                <input type="submit" style="width:100%" class="btn" value="OneByOne" name="OneByOne" />
-            </td>
-            <td style="width: 33%">
-                <input type="submit" style="width:100%" class="btn" value="Sparkle" name="Sparkle" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" style="width: 100%">
-                <label for="brightness-slider">Brightness:</label>
-                <input type="range" id="brightness-slider" style="width:100%" class="slide" min="0" max="100"
-                    name="brightness" value={{brightness}} />
-            </td>
-        </tr>
-    </table>
+    <div>
+        <div style="display: inline-block">
+            <object data="static/tree.txt" type="text/html" width="150" height="300"
+                style="overflow:hidden; width: 150px; height: 300px"></object>
+        </div>
+        <div style="display: inline-block">
+            <table class="center">
+                <tr colspan="3" style="width: 100%">
+                    <h1>Christmas Tree Controller</h1>
+                </tr>
+                <tr>
+                    <td colspan="3" style="width: 100%">
+                        <div class="first-half">
+                            <input type="submit" style="width:100%" class="btn" value="On" name="On" />
+                        </div>
+                        <div class="second-half">
+                            <input type="submit" style="width:100%" class="btn" value="Off" name="Off" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 33%">
+                        <input type="submit" style="width:100%" class="btn" value="Cycle" name="Cycle" />
+                    </td>
+                    <td style="width: 33%">
+                        <input type="submit" style="width:100%" class="btn" value="OneByOne" name="OneByOne" />
+                    </td>
+                    <td style="width: 33%">
+                        <input type="submit" style="width:100%" class="btn" value="Sparkle" name="Sparkle" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="width: 100%">
+                        <label for="brightness-slider">Brightness:</label>
+                        <input type="range" id="brightness-slider" style="width:100%" class="slide" min="0" max="100"
+                            name="brightness" value={{brightness}} />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <script>
         const Http = new XMLHttpRequest();
