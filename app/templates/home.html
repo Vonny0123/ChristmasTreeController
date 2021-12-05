@@ -26,6 +26,7 @@
         .center {
             margin-left: auto;
             margin-right: auto;
+            float: left;
         }
 
         .header h1 {
@@ -64,12 +65,10 @@
 
 
 <form method="post" action="/">
+    <object data="static/tree.txt" type="text/html" width="150" height="300"
+        style="overflow:hidden; width: 150px; height: 300px; float: left"></object>
     <table class="center">
-        <tr colspan="4" style="width: 100%">
-            <td rowspan="4">
-                <object data="static/tree.txt" type="text/html" width="150" height="300"
-                    style="overflow:hidden; width: 150px; height: 300px;"></object>
-            </td>
+        <tr colspan="3" style="width: 100%">
             <h1>Christmas Tree Controller</h1>
         </tr>
         <tr>
