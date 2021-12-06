@@ -120,46 +120,23 @@
 
 
             $("#off_click").click(function () {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url_for( 'app.on_click' ) }}",
-                    success: function () {
-                        alert("Tree Off.");
-                    }
-                });
+                $.getJSON('/off_click', {}, function (data) { });
+                return false;
             });
 
             $("#cycle_click").click(function () {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url_for( 'app.cycle_click' ) }}",
-                    success: function () {
-                        alert("Cycle on.");
-                    },
-                    fail: function () {
-                        alert("fail")
-                    }
-                });
+                $.getJSON('/cycle_click', {}, function (data) { });
+                return false;
             });
 
             $("#one_by_one_click").click(function () {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url_for( 'app.one_by_one_click' ) }}",
-                    success: function () {
-                        alert("One by one on.");
-                    }
-                });
+                $.getJSON('/one_by_one_click', {}, function (data) { });
+                return false;
             });
 
             $("#sparkle_click").click(function () {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url_for( 'app.sparkle_click' ) }}",
-                    success: function () {
-                        alert("Sparkle On.");
-                    }
-                });
+                $.getJSON('/sparkle_click', {}, function (data) { });
+                return false;
             });
         });
     </script>
