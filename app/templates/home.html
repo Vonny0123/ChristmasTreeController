@@ -76,23 +76,25 @@
                 <tr>
                     <td colspan="3">
                         <div class="first-half">
-                            <button style="width:100%" class="btn" value="On" name="On" id="on_button" />
+                            <button style="width:100%" class="btn" value="On" name="On" id="on_button">On</button>
                         </div>
                         <div class="second-half">
-                            <button style="width:100%" class="btn" value="Off" name="Off" id="off_button" />
+                            <button style="width:100%" class="btn" value="Off" name="Off" id="off_button">Off</button>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button style="width:100%" class="btn" value="Cycle" name="Cycle" id="cycle_button" />
+                        <button style="width:100%" class="btn" value="Cycle" name="Cycle"
+                            id="cycle_button">Cycle</button>
                     </td>
                     <td>
                         <button style="width:100%" class="btn" value="OneByOne" name="OneByOne"
-                            id="one_by_one_button" />
+                            id="one_by_one_button">One By One</button>
                     </td>
                     <td>
-                        <button style="width:100%" class="btn" value="Sparkle" name="Sparkle" id="sparkle_button" />
+                        <button style="width:100%" class="btn" value="Sparkle" name="Sparkle"
+                            id="sparkle_button">Sparkle</button>
                     </td>
                 </tr>
                 <tr>
@@ -119,22 +121,22 @@
             });
 
 
-            $("#off_click").click(function () {
+            $("#off_click").click(function (event) {
                 $.getJSON('/off_click', {}, function (data) { });
                 return false;
             });
 
-            $("#cycle_click").click(function () {
+            $("#cycle_click").click(function (event) {
                 $.getJSON('/cycle_click', {}, function (data) { });
                 return false;
             });
 
-            $("#one_by_one_click").click(function () {
+            $("#one_by_one_click").click(function (event) {
                 $.getJSON('/one_by_one_click', {}, function (data) { });
                 return false;
             });
 
-            $("#sparkle_click").click(function () {
+            $("#sparkle_click").click(function (event) {
                 $.getJSON('/sparkle_click', {}, function (data) { });
                 return false;
             });
