@@ -13,29 +13,6 @@ exit_event3 = Event()
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        tree.brightness = int(request.form.get("brightness")) / 100
-
-        exit_event1.set()
-        exit_event2.set()
-        exit_event3.set()
-        if request.form.get("On") == "On":
-            tree.on()
-        elif request.form.get("Off") == "Off":
-            tree.off()
-        elif request.form.get("Cycle") == "Cycle":
-            thread = Thread(target=hue_cycle)
-            thread.daemon = True
-            thread.start()
-        elif request.form.get("OneByOne") == "OneByOne":
-            thread = Thread(target=one_by_one)
-            thread.daemon = True
-            thread.start()
-        elif request.form.get("Sparkle") == "Sparkle":
-            thread = Thread(target=random_sparkles)
-            thread.daemon = True
-            thread.start()
-        else:
-            return "Error"
         return render_template(
             "home.html", brightness=int(request.form.get("brightness"))
         )
@@ -51,7 +28,44 @@ def slider():
     return received_data
 
 
+@app.route("/on_click", methods=["POST", "GET"])
+def slider():
+    received_data = request.data
+    halt_execution()
+    tree.on()
+    return received_data
+
+
+@app.route("/off_click", methods=["POST", "GET"])
+def slider():
+    received_data = request.data
+    tree.off()
+    return received_data
+
+
+@app.route("/sparkle_click", methods=["POST", "GET"])
+def slider():
+    received_data = request.data
+    random_sparkles()
+    return received_data
+
+
+@app.route("/one_by_one_click", methods=["POST", "GET"])
+def slider():
+    received_data = request.data
+    one_by_one()
+    return received_data
+
+
+@app.route("/cycle_click", methods=["POST", "GET"])
+def slider():
+    received_data = request.data
+    hue_cycle()
+    return received_data
+
+
 def hue_cycle():
+    halt_execution()
     tree.color = Color("red")
     if exit_event1.is_set():
         exit_event1.clear()
@@ -65,6 +79,7 @@ def hue_cycle():
 
 
 def one_by_one():
+    halt_execution()
     colors = [Color("red"), Color("green"), Color("blue")]  # add more if you like
     if exit_event2.is_set():
         exit_event2.clear()
@@ -86,6 +101,7 @@ def one_by_one():
 
 
 def random_sparkles():
+    halt_execution()
     if exit_event3.is_set():
         exit_event3.clear()
 
@@ -103,3 +119,9 @@ def random_sparkles():
                 break
     except KeyboardInterrupt:
         tree.close()
+
+
+def halt_execution():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
