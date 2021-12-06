@@ -28,7 +28,7 @@ def slider():
     return received_data
 
 
-@app.route("/on_click", methods=["POST", "GET"])
+@app.route("/on_button_click", methods=["POST", "GET"])
 def slider():
     received_data = request.data
     halt_execution()

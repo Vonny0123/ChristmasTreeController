@@ -121,14 +121,13 @@
         var one_by_one_button = document.getElementById("one_by_one_button");
         var sparkle_button = document.getElementById("sparkle_button");
         var brightness_slider = document.getElementById("brightness_slider");
-        var output = document.getElementById("demo");
         var current;
 
         on_button.oninput = function () {
             current = this.value;
 
             // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/on_click')
+            Http.open('POST', '/on_button_click')
             Http.send(current)
         }
 
