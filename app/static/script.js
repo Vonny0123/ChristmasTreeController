@@ -2,7 +2,7 @@ $(document).ready(function () {
     $("#on_click").click(function () {
         $.ajax({
             type: "GET",
-            url: "/on_click",
+            url: "{{ url_for( 'app.on_click' ) }}",
             success: function () {
                 alert("Tree On.");
             }
@@ -12,7 +12,7 @@ $(document).ready(function () {
     $("#off_click").click(function () {
         $.ajax({
             type: "GET",
-            url: "/off_click",
+            url: "{{ url_for( 'app.off_click' ) }}",
             success: function () {
                 alert("Tree Off.");
             }
@@ -22,7 +22,7 @@ $(document).ready(function () {
     $("#cycle_click").click(function () {
         $.ajax({
             type: "GET",
-            url: "/cycle_click",
+            url: "{{ url_for( 'app.cycle_click' ) }}",
             success: function () {
                 alert("Cycle on.");
             },
@@ -35,7 +35,7 @@ $(document).ready(function () {
     $("#one_by_one_click").click(function () {
         $.ajax({
             type: "GET",
-            url: "/one_by_one_click",
+            url: "{{ url_for( 'app.one_by_one_click' ) }}",
             success: function () {
                 alert("One by one on.");
             }
@@ -45,7 +45,7 @@ $(document).ready(function () {
     $("#sparkle_click").click(function () {
         $.ajax({
             type: "GET",
-            url: "/sparkle_click",
+            url: "{{ url_for( 'app.sparkle_click' ) }}",
             success: function () {
                 alert("Sparkle On.");
             }
