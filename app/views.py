@@ -30,6 +30,7 @@ def slider():
 
 @app.route("/on_click", methods=["POST", "GET"])
 def on_click():
+    print("on")
     received_data = request.data
     halt_execution()
     tree.on()
