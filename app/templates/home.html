@@ -114,14 +114,13 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script>
+        $(document).on("click", "#on_click", function (event) {
+            console.log("clicked")
+            $.getJSON('/on_click', {}, function (data) { });
+            return false;
+        });
+
         $(document).ready(function () {
-            $("#on_click").on('click', function (event) {
-                console.log("clicked")
-                $.getJSON('/on_click', {}, function (data) { });
-                return false;
-            });
-
-
             $("#off_click").on('click', function (event) {
                 $.getJSON('/off_click', {}, function (data) { });
                 return false;
