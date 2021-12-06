@@ -34,35 +34,35 @@ def on_click():
     received_data = request.data
     halt_execution()
     tree.on()
-    return json.dumps({"success": True}), 200, {"ContentType": "application/json"}
+    return "nothing"
 
 
 @app.route("/off_click", methods=["POST", "GET"])
 def off_click():
     received_data = request.data
     tree.off()
-    return received_data
+    return "nothing"
 
 
 @app.route("/sparkle_click", methods=["POST", "GET"])
 def sparkle_click():
     received_data = request.data
     random_sparkles()
-    return received_data
+    return "nothing"
 
 
 @app.route("/one_by_one_click", methods=["POST", "GET"])
 def one_by_one_click():
     received_data = request.data
     one_by_one()
-    return received_data
+    return "nothing"
 
 
 @app.route("/cycle_click", methods=["POST", "GET"])
 def cycle_click():
     received_data = request.data
     hue_cycle()
-    return received_data
+    return "nothing"
 
 
 def hue_cycle():
