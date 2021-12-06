@@ -3,6 +3,7 @@ from colorzero import Color, Hue
 from flask import Flask, render_template, request, redirect
 import random
 from threading import Thread, Event
+import json
 from . import app, tree
 
 exit_event1 = Event()
@@ -20,7 +21,6 @@ def index():
         return render_template("home.html")
 
 
-# I've added this method to receive slider updates
 @app.route("/slider_update", methods=["POST", "GET"])
 def slider():
     received_data = request.data
@@ -33,7 +33,7 @@ def on_click():
     received_data = request.data
     halt_execution()
     tree.on()
-    return received_data
+    return json.dumps({"success": True}), 200, {"ContentType": "application/json"}
 
 
 @app.route("/off_click", methods=["POST", "GET"])
