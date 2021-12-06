@@ -25,6 +25,9 @@ $(document).ready(function () {
             url: "/cycle_click",
             success: function () {
                 alert("Cycle on.");
+            },
+            fail: function () {
+                alert("fail")
             }
         });
     });
