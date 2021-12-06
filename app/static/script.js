@@ -1,18 +1,14 @@
 $(document).ready(function () {
-    $("#on_click").click(function () {
-        $.ajax({
-            type: "GET",
-            url: "{{ url_for( 'app.on_click' ) }}",
-            success: function () {
-                alert("Tree On.");
-            }
-        });
+    $("#on_click").click(function (event) {
+        $.getJSON('/on_click', {}, function (data) { });
+        return false;
     });
+
 
     $("#off_click").click(function () {
         $.ajax({
             type: "GET",
-            url: "{{ url_for( 'app.off_click' ) }}",
+            url: "{{ url_for( 'app.on_click' ) }}",
             success: function () {
                 alert("Tree Off.");
             }
