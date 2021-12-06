@@ -115,29 +115,29 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
-            $("a#on_click").click(function (event) {
+            $("a#on_click").on('click', function (event) {
                 console.log("clicked")
                 $.getJSON('/on_click', {}, function (data) { });
                 return false;
             });
 
 
-            $("a#off_click").click(function (event) {
+            $("a#off_click").on('click', function (event) {
                 $.getJSON('/off_click', {}, function (data) { });
                 return false;
             });
 
-            $("a#cycle_click").click(function (event) {
+            $("a#cycle_click").on('click', function (event) {
                 $.getJSON('/cycle_click', {}, function (data) { });
                 return false;
             });
 
-            $("a#one_by_one_click").click(function (event) {
+            $("a#one_by_one_click").on('click', function (event) {
                 $.getJSON('/one_by_one_click', {}, function (data) { });
                 return false;
             });
 
-            $("a#sparkle_click").click(function (event) {
+            $("a#sparkle_click").on('click', function (event) {
                 $.getJSON('/sparkle_click', {}, function (data) { });
                 return false;
             });
