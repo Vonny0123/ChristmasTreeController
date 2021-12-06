@@ -116,6 +116,7 @@
     <script>
         $(document).ready(function () {
             $("a#on_click").click(function (event) {
+                console.log("clicked")
                 $.getJSON('/on_click', {}, function (data) { });
                 return false;
             });
