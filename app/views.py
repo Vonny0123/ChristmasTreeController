@@ -52,7 +52,7 @@ def slider():
 
 
 @app.route("/on_button", methods=["POST", "GET"])
-def slider():
+def on_button():
     exit_event1.set()
     exit_event2.set()
     exit_event3.set()
