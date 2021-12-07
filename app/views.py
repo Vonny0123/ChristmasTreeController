@@ -12,7 +12,7 @@ exit_event3 = Event()
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    return render_template("home.html")
+    return render_template("home.html", brightness=int(tree.Brightness * 100))
 
 
 # I've added this method to receive slider updates
