@@ -12,35 +12,7 @@ exit_event3 = Event()
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    if request.method == "POST":
-        tree.brightness = int(request.form.get("brightness")) / 100
-
-        exit_event1.set()
-        exit_event2.set()
-        exit_event3.set()
-        if request.form.get("On") == "On":
-            tree.on()
-        elif request.form.get("Off") == "Off":
-            tree.off()
-        elif request.form.get("Cycle") == "Cycle":
-            thread = Thread(target=hue_cycle)
-            thread.daemon = True
-            thread.start()
-        elif request.form.get("OneByOne") == "OneByOne":
-            thread = Thread(target=one_by_one)
-            thread.daemon = True
-            thread.start()
-        elif request.form.get("Sparkle") == "Sparkle":
-            thread = Thread(target=random_sparkles)
-            thread.daemon = True
-            thread.start()
-        else:
-            return "Error"
-        return render_template(
-            "home.html", brightness=int(request.form.get("brightness"))
-        )
-    elif request.method == "GET":
-        return render_template("home.html")
+    return render_template("home.html")
 
 
 # I've added this method to receive slider updates
