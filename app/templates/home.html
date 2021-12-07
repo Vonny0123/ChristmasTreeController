@@ -140,6 +140,38 @@
             Http.send(current)
         }
 
+        off_button.onclick = function () {
+            current = this.value;
+
+            // I've added this call to the server, which send 'current' value
+            Http.open('POST', '/off_button')
+            Http.send(current)
+        }
+
+        cycle_button.onclick = function () {
+            current = this.value;
+
+            // I've added this call to the server, which send 'current' value
+            Http.open('POST', '/cycle_button')
+            Http.send(current)
+        }
+
+        one_by_one_button.onclick = function () {
+            current = this.value;
+
+            // I've added this call to the server, which send 'current' value
+            Http.open('POST', '/one_by_one_button')
+            Http.send(current)
+        }
+
+        sparkle_button.onclick = function () {
+            current = this.value;
+
+            // I've added this call to the server, which send 'current' value
+            Http.open('POST', '/sparkle_button')
+            Http.send(current)
+        }
+
     </script>
 
 </div>

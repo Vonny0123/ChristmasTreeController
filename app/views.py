@@ -61,6 +61,46 @@ def on_button():
     return received_data
 
 
+@app.route("/off_button", methods=["POST", "GET"])
+def on_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    tree.off()
+    return received_data
+
+
+@app.route("/cycle_button", methods=["POST", "GET"])
+def on_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    hue_cycle()
+    return received_data
+
+
+@app.route("/one_by_one_button", methods=["POST", "GET"])
+def on_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    one_by_one()
+    return received_data
+
+
+@app.route("/sparkle_button", methods=["POST", "GET"])
+def on_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    random_sparkles()
+    return received_data
+
+
 def hue_cycle():
     tree.color = Color("red")
     if exit_event1.is_set():
