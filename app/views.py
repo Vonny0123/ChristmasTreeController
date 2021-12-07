@@ -12,42 +12,64 @@ exit_event3 = Event()
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    if request.method == "POST":
-        tree.brightness = int(request.form.get("brightness")) / 100
-
-        exit_event1.set()
-        exit_event2.set()
-        exit_event3.set()
-        if request.form.get("On") == "On":
-            tree.on()
-        elif request.form.get("Off") == "Off":
-            tree.off()
-        elif request.form.get("Cycle") == "Cycle":
-            thread = Thread(target=hue_cycle)
-            thread.daemon = True
-            thread.start()
-        elif request.form.get("OneByOne") == "OneByOne":
-            thread = Thread(target=one_by_one)
-            thread.daemon = True
-            thread.start()
-        elif request.form.get("Sparkle") == "Sparkle":
-            thread = Thread(target=random_sparkles)
-            thread.daemon = True
-            thread.start()
-        else:
-            return "Error"
-        return render_template(
-            "home.html", brightness=int(request.form.get("brightness"))
-        )
-    elif request.method == "GET":
-        return render_template("home.html")
+    return render_template("home.html", brightness=int(tree.brightness * 100))
 
 
 # I've added this method to receive slider updates
-@app.route("/slider_update", methods=["POST", "GET"])
+@app.route("/brightness_slider", methods=["POST", "GET"])
 def slider():
     received_data = request.data
     tree.brightness = int(received_data) / 100
+    return received_data
+
+
+@app.route("/on_button", methods=["POST", "GET"])
+def on_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    tree.on()
+    return received_data
+
+
+@app.route("/off_button", methods=["POST", "GET"])
+def off_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    tree.off()
+    return received_data
+
+
+@app.route("/cycle_button", methods=["POST", "GET"])
+def cycle_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    hue_cycle()
+    return received_data
+
+
+@app.route("/one_by_one_button", methods=["POST", "GET"])
+def one_by_one_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    one_by_one()
+    return received_data
+
+
+@app.route("/sparkle_button", methods=["POST", "GET"])
+def sparkle_button():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    random_sparkles()
     return received_data
 
 

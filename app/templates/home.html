@@ -1,68 +1,11 @@
 <!doctype html>
-
 <html lang="en-us">
 
 <head>
-    <style>
-        body {
-            background-color: lightgray;
-        }
-
-        h1 {
-            color: rgb(51, 51, 51);
-            text-align: center;
-        }
-
-        input {
-            display: block
-        }
-
-        label {
-            display: block;
-            text-align: left;
-            font-size: 18px;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .header h1 {
-            position: relative;
-            top: 18px;
-            left: 10px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 25px;
-            font-size: 24px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #555555;
-        }
-
-        .btn:hover {
-            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        .first-half {
-            float: left;
-            width: 49.5%;
-        }
-
-        .second-half {
-            float: right;
-            width: 49.5%;
-        }
-    </style>
+    <link rel="stylesheet" href="static/style.css">
 </head>
 
-
-<form method="post" action="/">
+<body>
     <div class="center">
         <div style="float: left">
             <object data="static/tree.txt" type="text/html" width="175" height="300"
@@ -76,28 +19,32 @@
                 <tr>
                     <td colspan="3">
                         <div class="first-half">
-                            <input type="submit" style="width:100%" class="btn" value="On" name="On" />
+                            <input type="submit" id="on_button" style="width:100%" class="btn" value="On" name="On" />
                         </div>
                         <div class="second-half">
-                            <input type="submit" style="width:100%" class="btn" value="Off" name="Off" />
+                            <input type="submit" id="off_button" style="width:100%" class="btn" value="Off"
+                                name="Off" />
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" style="width:100%" class="btn" value="Cycle" name="Cycle" />
+                        <input type="submit" id="cycle_button" style="width:100%" class="btn" value="Cycle"
+                            name="Cycle" />
                     </td>
                     <td>
-                        <input type="submit" style="width:100%" class="btn" value="OneByOne" name="OneByOne" />
+                        <input type="submit" id="one_by_one_button" style="width:100%" class="btn" value="OneByOne"
+                            name="OneByOne" />
                     </td>
                     <td>
-                        <input type="submit" style="width:100%" class="btn" value="Sparkle" name="Sparkle" />
+                        <input type="submit" id="sparkle_button" style="width:100%" class="btn" value="Sparkle"
+                            name="Sparkle" />
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <label for="brightness-slider">Brightness:</label>
-                        <input type="range" id="brightness-slider" style="width:100%" class="slide" min="0" max="100"
+                        <label for="brightness_slider">Brightness:</label>
+                        <input type="range" id="brightness_slider" style="width:100%" class="slide" min="0" max="100"
                             name="brightness" value={{brightness}} />
                     </td>
                 </tr>
@@ -109,22 +56,7 @@
         </div>
     </div>
 
-    <script>
-        const Http = new XMLHttpRequest();
-        var rangeslider = document.getElementById("brightness-slider");
-        var output = document.getElementById("demo");
-        var current;
-
-        rangeslider.oninput = function () {
-            current = this.value;
-
-            // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/slider_update')
-            Http.send(current)
-        }
-
-    </script>
-
-</form>
+    <script src="static/script.js"></script>
+</body>
 
 </html>
