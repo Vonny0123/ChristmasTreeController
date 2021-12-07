@@ -62,7 +62,7 @@ def on_button():
 
 
 @app.route("/off_button", methods=["POST", "GET"])
-def on_button():
+def off_button():
     exit_event1.set()
     exit_event2.set()
     exit_event3.set()
@@ -72,7 +72,7 @@ def on_button():
 
 
 @app.route("/cycle_button", methods=["POST", "GET"])
-def on_button():
+def cycle_button():
     exit_event1.set()
     exit_event2.set()
     exit_event3.set()
@@ -82,7 +82,7 @@ def on_button():
 
 
 @app.route("/one_by_one_button", methods=["POST", "GET"])
-def on_button():
+def one_by_one_button():
     exit_event1.set()
     exit_event2.set()
     exit_event3.set()
@@ -92,7 +92,7 @@ def on_button():
 
 
 @app.route("/sparkle_button", methods=["POST", "GET"])
-def on_button():
+def sparkle_button():
     exit_event1.set()
     exit_event2.set()
     exit_event3.set()
