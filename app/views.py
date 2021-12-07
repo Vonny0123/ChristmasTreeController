@@ -44,10 +44,20 @@ def index():
 
 
 # I've added this method to receive slider updates
-@app.route("/slider_update", methods=["POST", "GET"])
+@app.route("/brigtness_slider", methods=["POST", "GET"])
 def slider():
     received_data = request.data
     tree.brightness = int(received_data) / 100
+    return received_data
+
+
+@app.route("/on_button", methods=["POST", "GET"])
+def slider():
+    exit_event1.set()
+    exit_event2.set()
+    exit_event3.set()
+    received_data = request.data
+    tree.on()
     return received_data
 
 

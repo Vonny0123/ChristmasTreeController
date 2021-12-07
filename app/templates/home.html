@@ -62,7 +62,7 @@
 </head>
 
 
-<form method="post" action="/">
+<div class=container>
     <div class="center">
         <div style="float: left">
             <object data="static/tree.txt" type="text/html" width="175" height="300"
@@ -76,28 +76,32 @@
                 <tr>
                     <td colspan="3">
                         <div class="first-half">
-                            <input type="submit" style="width:100%" class="btn" value="On" name="On" />
+                            <input type="submit" id="on_button" style="width:100%" class="btn" value="On" name="On" />
                         </div>
                         <div class="second-half">
-                            <input type="submit" style="width:100%" class="btn" value="Off" name="Off" />
+                            <input type="submit" id="off_button" style="width:100%" class="btn" value="Off"
+                                name="Off" />
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" style="width:100%" class="btn" value="Cycle" name="Cycle" />
+                        <input type="submit" id="cycle_button" style="width:100%" class="btn" value="Cycle"
+                            name="Cycle" />
                     </td>
                     <td>
-                        <input type="submit" style="width:100%" class="btn" value="OneByOne" name="OneByOne" />
+                        <input type="submit" id="one_by_one_button" style="width:100%" class="btn" value="OneByOne"
+                            name="OneByOne" />
                     </td>
                     <td>
-                        <input type="submit" style="width:100%" class="btn" value="Sparkle" name="Sparkle" />
+                        <input type="submit" id="sparkle_button" style="width:100%" class="btn" value="Sparkle"
+                            name="Sparkle" />
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
                         <label for="brightness-slider">Brightness:</label>
-                        <input type="range" id="brightness-slider" style="width:100%" class="slide" min="0" max="100"
+                        <input type="range" id="brightness_slider" style="width:100%" class="slide" min="0" max="100"
                             name="brightness" value={{brightness}} />
                     </td>
                 </tr>
@@ -111,20 +115,33 @@
 
     <script>
         const Http = new XMLHttpRequest();
-        var rangeslider = document.getElementById("brightness-slider");
-        var output = document.getElementById("demo");
+        var brightness_slider = document.getElementById("brightness_slider");
+        var on_button = document.getElementById("on_button");
+        var off_button = document.getElementById("off_button");
+        var cycle_button = document.getElementById("cycle_button");
+        var one_by_one_button = document.getElementById("one_by_one_button");
+        var sparkle_button = document.getElementById("sparkle_button");
+
         var current;
 
-        rangeslider.oninput = function () {
+        brightness_slider.oninput = function () {
             current = this.value;
 
             // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/slider_update')
+            Http.open('POST', '/brightness_slider')
+            Http.send(current)
+        }
+
+        on_button.oninput = function () {
+            current = this.value;
+
+            // I've added this call to the server, which send 'current' value
+            Http.open('POST', '/on_button')
             Http.send(current)
         }
 
     </script>
 
-</form>
+</div>
 
 </html>
