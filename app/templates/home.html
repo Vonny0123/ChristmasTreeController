@@ -59,150 +59,71 @@
             width: 49.5%;
         }
     </style>
-</head>
 
-
-<form method="post" action="/">
-    <div class="center">
-        <div style="float: left">
-            <object data="static/tree.txt" type="text/html" width="175" height="300"
-                style="overflow:hidden; width: 175px; height: 300px"></object>
-        </div>
-        <div style="float: left">
-            <table>
-                <tr colspan="3">
-                    <h1>Christmas Tree Controller</h1>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div class="first-half">
-                            <button style="width:100%" class="btn" value="On" name="On" id="on_button">On</button>
-                        </div>
-                        <div class="second-half">
-                            <button style="width:100%" class="btn" value="Off" name="Off" id="off_button">Off</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button style="width:100%" class="btn" value="Cycle" name="Cycle"
-                            id="cycle_button">Cycle</button>
-                    </td>
-                    <td>
-                        <button style="width:100%" class="btn" value="OneByOne" name="OneByOne"
-                            id="one_by_one_button">One By One</button>
-                    </td>
-                    <td>
-                        <button style="width:100%" class="btn" value="Sparkle" name="Sparkle"
-                            id="sparkle_button">Sparkle</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <label for="brightness-slider">Brightness:</label>
-                        <input type="range" id="brightness_slider" style="width:100%" class="slide" min="0" max="100"
-                            name="brightness" value={{brightness}} />
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div style="float: left">
-            <object data="static/tree.txt" type="text/html" width="175" height="300"
-                style="overflow:hidden; width: 175px; height: 300px"></object>
-        </div>
-    </div>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script>
-        $(document).on("click", "#on_click", function (event) {
+        var onClick = document.getElementById("on_click")
+        onClick.onclick = function (event) {
+            event.preventDefault();
             console.log("clicked")
             $.getJSON('/on_click', {}, function (data) { });
             return false;
-        });
-
-        $(document).ready(function () {
-            $("#off_click").on('click', function (event) {
-                $.getJSON('/off_click', {}, function (data) { });
-                return false;
-            });
-
-            $("#cycle_click").on('click', function (event) {
-                $.getJSON('/cycle_click', {}, function (data) { });
-                return false;
-            });
-
-            $("#one_by_one_click").on('click', function (event) {
-                $.getJSON('/one_by_one_click', {}, function (data) { });
-                return false;
-            });
-
-            $("#sparkle_click").on('click', function (event) {
-                $.getJSON('/sparkle_click', {}, function (data) { });
-                return false;
-            });
-        });
+        }
     </script>
+</head>
 
-    <!-- <script>
-        const Http = new XMLHttpRequest();
-        var on_button = document.getElementById("on_button");
-        var off_button = document.getElementById("off_button");
-        var cycle_button = document.getElementById("cycle_button");
-        var one_by_one_button = document.getElementById("one_by_one_button");
-        var sparkle_button = document.getElementById("sparkle_button");
-        var brightness_slider = document.getElementById("brightness_slider");
-        var current;
-
-        on_button.oninput = function () {
-            current = this.value;
-
-            // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/on_button_click')
-            Http.send(current)
-        }
-
-        off_button.oninput = function () {
-            current = this.value;
-
-            // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/off_click')
-            Http.send(current)
-        }
-
-        cycle_button.oninput = function () {
-            current = this.value;
-
-            // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/cycle_click')
-            Http.send(current)
-        }
-
-        one_by_one_button.oninput = function () {
-            current = this.value;
-
-            // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/one_by_one_click')
-            Http.send(current)
-        }
-
-        sparkle_button.oninput = function () {
-            current = this.value;
-
-            // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/sparkle_click')
-            Http.send(current)
-        }
-
-        brightness_slider.oninput = function () {
-            current = this.value;
-
-            // I've added this call to the server, which send 'current' value
-            Http.open('POST', '/slider_update')
-            Http.send(current)
-        }
-
-    </script> -->
-
-</form>
+<body>
+    <div class="container">
+        <div class="center">
+            <div style="float: left">
+                <object data="static/tree.txt" type="text/html" width="175" height="300"
+                    style="overflow:hidden; width: 175px; height: 300px"></object>
+            </div>
+            <div style="float: left">
+                <table>
+                    <tr colspan="3">
+                        <h1>Christmas Tree Controller</h1>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="first-half">
+                                <a type="submit" style="width:100%" class="btn" value="On" name="On"
+                                    id="on_button">On</a>
+                            </div>
+                            <div class="second-half">
+                                <button style="width:100%" class="btn" value="Off" name="Off"
+                                    id="off_button">Off</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button style="width:100%" class="btn" value="Cycle" name="Cycle"
+                                id="cycle_button">Cycle</button>
+                        </td>
+                        <td>
+                            <button style="width:100%" class="btn" value="OneByOne" name="OneByOne"
+                                id="one_by_one_button">One By One</button>
+                        </td>
+                        <td>
+                            <button style="width:100%" class="btn" value="Sparkle" name="Sparkle"
+                                id="sparkle_button">Sparkle</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <label for="brightness-slider">Brightness:</label>
+                            <input type="range" id="brightness_slider" style="width:100%" class="slide" min="0"
+                                max="100" name="brightness" value={{brightness}} />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: left">
+                <object data="static/tree.txt" type="text/html" width="175" height="300"
+                    style="overflow:hidden; width: 175px; height: 300px"></object>
+            </div>
+        </div>
+    </div>
+</body>
 
 </html>
